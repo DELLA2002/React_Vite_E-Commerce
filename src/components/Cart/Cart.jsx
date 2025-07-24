@@ -94,7 +94,7 @@ export default function Cart() {
                 </div>
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {product.price} EGP
+                {product.price*product.count} EGP
                 </td>
                 <td className="px-6 py-4">
                 <span onClick={()=>removeItem(product.product.id)} className="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline">
