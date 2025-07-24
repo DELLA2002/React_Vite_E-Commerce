@@ -20,7 +20,7 @@ import { Toaster } from 'react-hot-toast';
 
 
 let Routing = createBrowserRouter([
-  {path:'' , element:<Layout/> , children:[
+  {path:'React_Vite_E-Commerce' , element:<Layout/> , children:[
     {index:true , element: <ProtectedRoute><Home/></ProtectedRoute> },
     {path:'cart' , element:<ProtectedRoute><Cart/></ProtectedRoute>},
     {path:'products' , element:<ProtectedRoute><Products/></ProtectedRoute>},
