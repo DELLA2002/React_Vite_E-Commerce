@@ -7,5 +7,4 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-    base : '/React_Vite_E-Commerce/'
 })
