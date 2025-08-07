@@ -48,7 +48,7 @@ export default function RecentProducts() {
         <div className="row">
     
             {data.map((product)=>
-            <div key={product.id} className="w-1/4 px-2 py-4 overflow-hidden">
+            <div key={product.id} className="w-full md:w-1/2 lg:w-1/4 px-2 py-4 overflow-hidden">
                         <div className="product hover:shadow-green-800 bg-lime-50 duration-500 shadow-lg px-2 py-4 rounded-2xl">
             <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className='w-full rounded-2xl' src={product.imageCover} alt={product.title} />

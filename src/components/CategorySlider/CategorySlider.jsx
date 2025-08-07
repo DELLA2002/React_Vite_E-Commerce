@@ -28,7 +28,7 @@ export default function CategorySlider() {
         getCategories();
     },[]);
     return <>
-    <div>
+    <div className='hidden lg:block'>
         <h2 className='py-5 text-2xl font-normal'>Shop Popular Items</h2>
         <Slider {...settings}>
             {categories?.map((category)=><div>

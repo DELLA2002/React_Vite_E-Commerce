@@ -44,9 +44,43 @@ export default function ProductDetails() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay:true
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    autoplay:true,
+    responsive: [
+        {
+            breakpoint: 1280,
+            settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            initialSlide: 1
+            }
+        },
+        {
+            breakpoint: 1024,
+            settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            initialSlide: 1
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 1
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+            }
+        },
+    ]
     };
     let {id , category} = useParams();
     const [productDetails, setProductDetails] = useState(null);
@@ -79,13 +113,13 @@ export default function ProductDetails() {
     },[id , category]);
     return <>
     {productDetails !== null ?<> <div className="row">
-            <div className="w-1/4 mb-2 px-6">
+            <div className="w-full md:w-1/4 mb-2 mt-15 px-6">
     
                 <Slider {...settings}>
                     {productDetails?.images?.map((src)=><img className='w-full ' src={src} />)}
                 </Slider>
             </div>
-            <div className="w-3/4 px-6">
+            <div className="w-full md:w-3/4 px-6">
                 <h1 className='font-normal'>{productDetails?.title}</h1>
                 <p>{productDetails?.description}</p>
                 <div className="flex justify-between py-4">
@@ -102,7 +136,7 @@ export default function ProductDetails() {
         </div> 
                 <Slider {...settings2}>            
                 {relatedProducts.map((product)=>
-                    <div key={product.id} className="w-1/5 px-2 py-4 overflow-hidden">
+                    <div key={product.id} className="w-full px-2 py-4 overflow-hidden">
                         <div className="product hover:shadow-green-800 bg-lime-50 duration-500 shadow-lg px-2 py-4 rounded-2xl">
                     <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className='w-full rounded-2xl' src={product.imageCover} alt={product.title} />

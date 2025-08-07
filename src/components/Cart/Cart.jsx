@@ -40,7 +40,7 @@ export default function Cart() {
     useEffect(()=>{
         getProducts();
     },[]);
-    return <div className='flex items-center flex-col'>
+    return <div className='flex items-center flex-col mt-20'>
             {cartDetails?.data.products.length === 0 ? <div className='py-50 text-center'>
                 <h2 className='text-4xl font-extrabold'>No items in Your cart</h2>
             </div> : null}
@@ -71,7 +71,7 @@ export default function Cart() {
                 <img src={product.product.imageCover} className="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch" />
                 </td>
                 <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {product.product.title}
+                {product.product.title.split(' ').slice(0,2).join(' ')}
                 </td>
                 <td className="px-6 py-4">
                 <div className="flex items-center">
@@ -109,7 +109,7 @@ export default function Cart() {
         </div>) : <div className='absolute top-0 left-0 right-0 bottom-0 bg-gray-600 flex z-100 justify-center items-center'>
                 <span className="loader"></span>
             </div>}
-            <button onClick={()=>clearItems()} className='px-4 py-2 hover:cursor-pointer hover:bg-red-950 transition-all duration-300 rounded-lg text-white w-1/4 my-5 text-2xl bg-red-500'>
+            <button onClick={()=>clearItems()} className='px-4 py-2 hover:cursor-pointer hover:bg-red-950 transition-all duration-300 rounded-lg text-white w-1/2 lg:w-1/4 my-5 text-2xl bg-red-500'>
                 {isClearing?<i className='fa-spin fa-spinner fas'></i>:"Clear your cart"}
             </button>
     </div>

@@ -13,10 +13,10 @@ export default function Categories() {
         }
 
     return <>
-        <h1 className='text-center text-4xl text-green-600 font-bold'>All Brands</h1>
+        <h1 className='text-center text-4xl text-green-600 font-bold mt-15'>All Brands</h1>
     <div className="row">
         {data?.data.map((brand)=>
-            <div key={brand._id} className="w-1/4  px-2 py-4">
+            <div key={brand._id} className="w-full md:w-1/2 lg:w-1/4  px-2 py-4">
                 
                     <div className="hover:shadow-green-800 relative border-2 h-70 text-center overflow-hidden border-green-200 duration-500 shadow-lg px-2 py-4 rounded-2xl">
                         <img src={brand.image} className='w-full' />

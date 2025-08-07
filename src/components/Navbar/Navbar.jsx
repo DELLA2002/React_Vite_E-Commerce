@@ -41,8 +41,8 @@ export default function Navbar() {
         <div className=" flex bg-gray-200 justify-between mx-auto">
             <div className='flex items-center'>
                 {/* <h2 className='text-2xl px-2'>logo</h2> */}
-                <img src={logo} className='mx-8' width={70} alt="collect shopping logo" />
-                <ul className='flex justify-around w-100 mx-4'>
+                <img src={logo} className='mx-8' width={100} alt="collect shopping logo" />
+                <ul className='md:max-2xl:flex md:max-2xl:justify-around md:max-2xl:w-100  mx-4'>
                     {userToken !== null ? <>
                         <li><NavLink  className='text-slate-900 nav-item text-lg font-light' to=''>Home</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='cart'>Cart</NavLink></li>
@@ -54,8 +54,8 @@ export default function Navbar() {
                     </ul>
             </div>
             <div className='flex items-center'>
-                <ul className='flex justify-around w-100 mx-8 items-center'>
-                    <li>
+                <ul className='lg:flex lg:justify-around lg:w-100 lg:mx-8 items-center'>
+                    <li className='invisible lg:visible'>
                         <a href='https://www.facebook.com/mohamed.ahmedabdellah' target='_blank'><i className='fab mx-2 text-2xl fa-facebook hover:text-blue-500 duration-200'></i></a>
                         <a href="https://www.instagram.com/mohamed3abdellaa/" target='_blank'><i className='fab mx-2 text-2xl fa-instagram hover:text-purple-500 duration-200'></i></a>
                         <a href="https://github.com/DELLA2002" target='_blank'><i className='fab mx-2 text-2xl fa-github'></i></a>
@@ -64,8 +64,8 @@ export default function Navbar() {
                     </li>
                     {
                         userToken === null ? <>
-                            <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='login'>Login</NavLink></li>
-                            <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='register'>Register</NavLink></li>
+                            <li className='inline-block mx-4'><NavLink className='text-slate-900 text-lg nav-item font-light' to='login'>Login</NavLink></li>
+                            <li className='inline-block mx-4'><NavLink className='text-slate-900 text-lg nav-item font-light '  to='register'>Register</NavLink></li>
                         </> : <div className='flex justify-between w-1/4 items-center'><Link to={'cart'}><i className="fa-solid fa-cart-shopping text-2xl pr-10 text-blue-950 relative"><span className='absolute bottom-1 left-1 ml-4 mb-1 bg-orange-400 p-2 text-sm font-extralight rounded-full text-white'>{numOfCartItems}</span></i> </Link><li onClick={logOut}><span className='text-slate-900 text-lg nav-item font-light cursor-pointer'>Logout</span></li></div> 
                     }
                     </ul>

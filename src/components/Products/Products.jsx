@@ -44,11 +44,11 @@ export default function Products() {
         </div>
     }
     return <>
-        <h1 className='text-center text-4xl text-green-600 font-bold'>All Products</h1>
+        <h1 className='text-center text-4xl text-green-600 font-bold mt-15'>All Products</h1>
         <div className="row">
     
             {data.map((product)=>
-            <div key={product.id} className="w-1/4 px-2 py-4 overflow-hidden">
+            <div key={product.id} className="w-full md:w-1/2 lg:w-1/4 px-2 py-4 overflow-hidden">
                         <div className="product hover:shadow-green-800 bg-lime-50 duration-500 shadow-lg px-2 py-4 rounded-2xl">
             <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                             <img className='w-full rounded-2xl' src={product.imageCover} alt={product.title} />
