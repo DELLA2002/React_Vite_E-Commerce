@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className='flex items-center'>
                 {/* <h2 className='text-2xl px-2'>logo</h2> */}
                 <img src={logo} className='mx-8' width={100} alt="collect shopping logo" />
-                <ul className='md:max-2xl:flex md:max-2xl:justify-around md:max-2xl:w-100  mx-4'>
+                <ul className='md:flex md:justify-around md:w-100  mx-4'>
                     {userToken !== null ? <>
                         <li><NavLink  className='text-slate-900 nav-item text-lg font-light' to=''>Home</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='cart'>Cart</NavLink></li>
@@ -66,7 +66,7 @@ export default function Navbar() {
                         userToken === null ? <>
                             <li className='inline-block mx-4'><NavLink className='text-slate-900 text-lg nav-item font-light' to='login'>Login</NavLink></li>
                             <li className='inline-block mx-4'><NavLink className='text-slate-900 text-lg nav-item font-light '  to='register'>Register</NavLink></li>
-                        </> : <div className='flex flex-col md:flex-row justify-between w-1/4 items-center'><Link to={'cart'}><i className="fa-solid fa-cart-shopping text-2xl pr-10 text-blue-950 relative"><span className='absolute bottom-1 left-1 ml-4 mb-1 bg-orange-400 p-2 text-sm font-extralight rounded-full text-white'>{numOfCartItems}</span></i> </Link><li onClick={logOut}><span className='text-slate-900 text-lg nav-item font-light cursor-pointer'>Logout</span></li></div> 
+                        </> : <div className='flex flex-col md:flex-row justify-between mx-12 w-1/4 items-center'><Link to={'cart'}><i className="fa-solid fa-cart-shopping text-2xl pr-10 text-blue-950 relative"><span className='absolute bottom-1 left-1 ml-4 mb-1 bg-orange-400 p-2 text-sm font-extralight rounded-full text-white'>{numOfCartItems}</span></i> </Link><li onClick={logOut}><span className='text-slate-900 text-lg nav-item font-light cursor-pointer'>Logout</span></li></div> 
                     }
                     </ul>
             </div>
