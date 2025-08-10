@@ -46,6 +46,7 @@ export default function Navbar() {
                     {userToken !== null ? <>
                         <li><NavLink  className='text-slate-900 nav-item text-lg font-light' to=''>Home</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='cart'>Cart</NavLink></li>
+                    <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='wishlist'>Wishlist</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='products'>Products</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='categories'>Categories</NavLink></li>
                     <li><NavLink className='text-slate-900 text-lg nav-item font-light' to='brands'>Brands</NavLink></li>

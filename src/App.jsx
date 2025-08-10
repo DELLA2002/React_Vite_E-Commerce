@@ -17,6 +17,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CartContextProvider from './Context/CartContext';
 import { Toaster } from 'react-hot-toast';
+import Wishlist from './components/Wishlist/Wishlist';
+import WishlistContextProvider, { WishlistContext } from './Context/WishlistContext';
 
 
 let Routing = createBrowserRouter([
@@ -25,6 +27,7 @@ let Routing = createBrowserRouter([
     {path:'cart' , element:<ProtectedRoute><Cart/></ProtectedRoute>},
     {path:'products' , element:<ProtectedRoute><Products/></ProtectedRoute>},
     {path:'categories' , element:<ProtectedRoute><Categories/></ProtectedRoute>},
+    {path:'wishlist' , element:<ProtectedRoute><Wishlist/></ProtectedRoute>},
     {path:'brands' , element:<ProtectedRoute><Brands/></ProtectedRoute>},
     {path:'productdetails/:id/:category' , element:<ProtectedRoute><ProductDetails/></ProtectedRoute>},
     {path:'login' , element:<Login/>},
@@ -34,7 +37,8 @@ let Routing = createBrowserRouter([
 ])
 function App() {
   let query = new QueryClient();
-  return <CartContextProvider>
+  return <WishlistContextProvider>
+  <CartContextProvider>
 <QueryClientProvider client={query}>
       <UserContextProvider>
 
@@ -44,7 +48,7 @@ function App() {
       </UserContextProvider>
   </QueryClientProvider>
   </CartContextProvider>
-  
+  </WishlistContextProvider>
 }
 
 export default App

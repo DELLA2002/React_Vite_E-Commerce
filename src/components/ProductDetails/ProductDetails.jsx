@@ -7,9 +7,11 @@ import { Link, useParams } from 'react-router-dom';
 import Slider from "react-slick";
 import { CartContext } from '../../Context/CartContext';
 import toast from 'react-hot-toast';
+import { WishlistContext } from '../../Context/WishlistContext';
 
 export default function ProductDetails() {
     let {addToCart} = useContext(CartContext);
+    let {addToWishlist}  = useContext(WishlistContext);
     const [isAdding, setIsAdding] = useState(false);
     async function addProductToCart(productId){
         setIsAdding(true);
@@ -31,7 +33,25 @@ export default function ProductDetails() {
             })
         }
     }
-    
+    async function addProductToWishlist(productId){
+            let response = await addToWishlist(productId);
+            console.log(response);
+            if(response.data.status === "success"){
+                toast.success(`${response.data.message}` , {
+                    duration:3000,
+                    position:"top-right",
+                    style:{
+                        backgroundColor:"green",
+                        color:"white"
+                    }
+                })
+            }else{
+                toast.error(`${response.data.message}` , {
+                    duration:3000,
+                    position:"top-right"
+                })
+            }
+        }
     let settings = {
     dots: false,
     infinite: true,
@@ -125,10 +145,13 @@ export default function ProductDetails() {
                 <div className="flex justify-between py-4">
                                 <p className='font-semibold text-xl'>{productDetails?.price} EGP</p>
                                 <p className='font-semibold text-xl'>{productDetails?.ratingsAverage} <i className='fas fa-star text-yellow-400'></i></p>
+                                <button onClick={()=>addProductToWishlist(productDetails?.id)}> <i onClick={(e)=>{e.currentTarget.classList.add("text-red-600")}} className='fas inline-block fa-heart text-2xl hover:cursor-pointer hover:text-red-600 duration-200'></i></button>
+                        
                             </div>
                             <button onClick={()=>addProductToCart(productDetails?.id)} className='btn'>
                             {isAdding?<i className='fa-spin fa-spinner fas'></i>:"Add to Cart"}
                         </button>
+                        
             </div>
                 <h2 className='text-3xl font-semibold mx-auto my-4'>Related Products</h2>
             
@@ -146,6 +169,8 @@ export default function ProductDetails() {
                                 <p>{product.price} EGP</p>
                                 <p>{product.ratingsAverage} <i className='fas fa-star text-yellow-400'></i></p>
                             </div>
+                            <button onClick={()=>addProductToWishlist(productDetails?.id)}> <i onClick={(e)=>{e.currentTarget.classList.add("text-red-600")}} className='fas inline-block fa-heart text-2xl hover:cursor-pointer hover:text-red-600 duration-200'></i></button>
+                        
                             <button onClick={()=>addProductToCart(product.id)} className='btn'>
                             {isAdding?<i className='fa-spin fa-spinner fas'></i>:"Add to Cart"}
                         </button>

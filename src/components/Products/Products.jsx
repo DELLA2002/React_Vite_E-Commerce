@@ -8,9 +8,11 @@ import { CircleLoader, DotLoader } from 'react-spinners';
 import useProducts from '../../hooks/useProducts';
 import { CartContext } from '../../Context/CartContext';
 import toast from 'react-hot-toast';
+import { WishlistContext } from '../../Context/WishlistContext';
 
 export default function Products() {
     let {addToCart} = useContext(CartContext);
+    let {addToWishlist} = useContext(WishlistContext);
     const [isAdding, setIsAdding] = useState(false);
     async function addProductToCart(productId){
         setIsAdding(true);
@@ -34,6 +36,25 @@ export default function Products() {
         // console.log(response);
         
     }   
+    async function addProductToWishlist(productId){
+            let response = await addToWishlist(productId);
+            console.log(response);
+            if(response.data.status === "success"){
+                toast.success(`${response.data.message}` , {
+                    duration:3000,
+                    position:"top-right",
+                    style:{
+                        backgroundColor:"green",
+                        color:"white"
+                    }
+                })
+            }else{
+                toast.error(`${response.data.message}` , {
+                    duration:3000,
+                    position:"top-right"
+                })
+            }
+        }
 
     let {data , isLoading , error , isError , isFetching} = useProducts();
     if(isLoading){
@@ -57,8 +78,10 @@ export default function Products() {
                             <div className="flex justify-between">
                                 <p>{product.price} EGP</p>
                                 <p>{product.ratingsAverage} <i className='fas fa-star text-yellow-400'></i></p>
+                        
                             </div>
             </Link>
+                        <button onClick={()=>addProductToWishlist(product.id)}> <i onClick={(e)=>{e.currentTarget.classList.add("text-red-600")}} className='fas inline-block fa-heart text-2xl hover:cursor-pointer hover:text-red-600 duration-200'></i></button>
                         <button onClick={()=>addProductToCart(product.id)} className='btn'>
                             {isAdding?<i className='fa-spin fa-spinner fas'></i>:"Add to Cart"}
                         </button>
